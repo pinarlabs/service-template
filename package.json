@@ -10,10 +10,9 @@
     "lint": "tsc --noEmit && eslint \"{src,test}/**/*.{js,ts}\" --quiet --fix",
     "lint:fix": "eslint src --fix",
     "db:migrate": "node db-migrate.js",
-    "test": "npm run lint && NODE_ENV=test node ./tasks/jest-db.js --detectOpenHandles --forceExit",
-    "test:db": "npm run lint && NODE_ENV=test node ./tasks/jest-db.js \"test/02-integration/.*.test.(js|ts)\" --detectOpenHandles --forceExit",
-    "test:unit": "npm run lint && NODE_ENV=test jest \"test/01-unit/.*.test.(js|ts)\" --detectOpenHandles --forceExit",
-    "test:only": "npm run lint && NODE_ENV=test jest \"test/.*.test.(js|ts)\" --detectOpenHandles --forceExit"
+    "pretest": "./tasks/db-setup.sh up",
+    "test": "npm run lint &&  ./tasks/run-tests.sh",
+    "test:run": "NODE_ENV=test jest --detectOpenHandles --forceExit --testPathPattern=tests"
   },
   "repository": {
     "type": "git",
