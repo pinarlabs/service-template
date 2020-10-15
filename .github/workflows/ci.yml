@@ -32,7 +32,7 @@ jobs:
       - name: Migrate and Run Tests
         run: npm run db:migrate && npm run test
         env:
-          DB_HOST: postgres
+          DB_HOST: localhost
           DB_NAME: pinarlabs-db
           DB_PORT: 5432
           DB_USER: postgres
