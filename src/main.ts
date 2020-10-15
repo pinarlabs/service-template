@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 
-import dotenv from "dotenv";
 import { Sequelize } from "sequelize";
 import { Application } from "express";
 
-dotenv.config();
 import createApp from "./app";
 import TYPES from "./types";
 import createContainer from "./inversify.config";

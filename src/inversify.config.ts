@@ -6,13 +6,15 @@ import TYPES from "./types";
 import nodeConfig from "config";
 import { ILogger, INodeConfig } from "./interfaces";
 import { Sequelize } from "sequelize";
-
+import dotenv from "dotenv";
 /* Import controllers for automatic binding */
 import "./controllers";
 import StatusService from "./services/status/StatusService";
 import { RunningContextRepository } from "./repository/RunningContextRepository";
 import RunningContextModel from "./models/RunningContextModel";
 import { RunningContextService } from "./services/runningContext/RunningContextService";
+
+dotenv.config();
 
 export default function createContainer(): Container {
   const container = new Container();

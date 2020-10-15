@@ -3,8 +3,34 @@ on: [push]
 jobs:
   run-template-tests:
     runs-on: ubuntu-latest
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: pinarlabs
+          POSTGRES_DB: pinarlabs-db
+          POSTGRES_USER: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-      - run: npm install
-      - run: npm ls
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Node
+        uses: actions/setup-node@v1
+      - name: Install Dependencies
+        run: npm install
+      - name: Migrate and Run Tests
+        run: npm run db:migrate && npm run test
+        env:
+          DB_HOST: postgres
+          DB_NAME: pinarlabs-db
+          DB_PORT: 5432
+          DB_USER: postgres
+          DB_PASSWORD: pinarlabs

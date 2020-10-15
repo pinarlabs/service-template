@@ -10,7 +10,6 @@
     "lint": "tsc --noEmit && eslint \"{src,test}/**/*.{js,ts}\" --quiet --fix",
     "lint:fix": "eslint src --fix",
     "db:migrate": "node db-migrate.js",
-    "pretest": "./tasks/db-setup.sh up",
     "test": "npm run lint &&  ./tasks/run-tests.sh",
     "test:run": "NODE_ENV=test jest --detectOpenHandles --forceExit --testPathPattern=tests"
   },
