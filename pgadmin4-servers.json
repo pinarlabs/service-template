@@ -1,0 +1,14 @@
+{
+    "Servers": {
+      "1": {
+          "Name": "template",
+          "Group": "Pinarlabs",
+          "Host": "postgres",
+          "Port": 5432,
+          "MaintenanceDB": "pinarlabs-db",
+          "Username": "postgres",
+          "SSLMode": "prefer"
+      }
+    }
+  }
+  
