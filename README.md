@@ -12,6 +12,11 @@ This repository contains a template to build a REST API using:
 - Postgres as database
 - Sequelize as ORM and database migrations
 
+Also getting this template you get a github workflow configured with:
+- postgres database for running tests unit/integration depending on your strategy
+- running tests
+- posting results to coveralls
+
 ## How to apply this template to your project
 
 1. Create a git repo
